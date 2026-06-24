@@ -52,7 +52,7 @@ function AdminDashboardContent() {
         const formData = new FormData();
         formData.append("image", editImageFile);
 
-        const imgbbKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY || "e137d11ae145b9f6610a6d8377ef5413";
+        const imgbbKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY || "b1853282639e644452aea49abca2dc11";
         const uploadRes = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbKey}`, {
           method: "POST",
           body: formData,
