@@ -1,49 +1,75 @@
 "use client";
 
 import Link from "next/link";
-import { Ticket, Home, Search } from "lucide-react";
+import { Home, ArrowLeft, TrainFront } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--background)] px-6 py-12">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[var(--primary)] rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-indigo-500 rounded-full blur-[100px]" />
+    <div className="relative min-h-screen flex flex-col justify-center items-center bg-slate-950 px-4 py-24 sm:px-6 lg:px-8 select-none overflow-hidden">
+      
+      {/* 🔮 ব্যাকগ্রাউন্ড গ্লো ইফেক্টস (স্লিক ও রিফাইনড) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-teal-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* 🧩 বিশাল ব্যাকগ্রাউন্ড টেক্সট ওয়াটারমার্ক - যা পুরো লুক বদলে দেয় */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.02]">
+        <h1 className="text-[30vw] font-black tracking-tighter text-white">404</h1>
       </div>
 
-      <div className="relative w-full max-w-lg text-center space-y-8 bg-[var(--card)] border border-[var(--border)] rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-md">
-        <div className="relative w-24 h-24 bg-[var(--primary)]/10 text-[var(--primary)] rounded-3xl flex items-center justify-center mx-auto shadow-inner animate-bounce">
-          <Ticket className="w-12 h-12" />
-          <span className="absolute -top-1 -right-1 flex h-4 w-4">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 text-[8px] text-white font-extrabold items-center justify-center">!</span>
-          </span>
+      <div className="relative max-w-xl w-full text-center space-y-10 z-10">
+        
+        {/* 🎫 ইমার্সিভ অ্যানিমেটেড আইকন সেকশন */}
+        <div className="relative inline-flex items-center justify-center">
+          <div className="p-5 bg-slate-900/50 border border-slate-800/80 rounded-3xl backdrop-blur-xs relative group shadow-2xl">
+            <TrainFront className="w-14 h-14 text-emerald-500 animate-pulse" />
+            
+            {/* নোটিফিকেশন ডট ব্যাজ */}
+            <span className="absolute -top-1.5 -right-1.5 flex h-5 w-5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-5 w-5 bg-rose-500 text-[10px] text-white font-black items-center justify-center shadow-xs">
+                ✕
+              </span>
+            </span>
+          </div>
         </div>
 
-        <div className="space-y-3">
-          <span className="text-sm font-black tracking-widest text-[var(--primary)] uppercase">Error 404</span>
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">Route Not Found</h1>
-          <p className="text-sm text-foreground/60 leading-relaxed font-medium">
-            Lost your ticket? The itinerary or station you are trying to reach does not exist, or has been moved to a new route.
+        {/* 📝 টাইপোগ্রাফি ও মেসেজিং সেকশন */}
+        <div className="space-y-4">
+          <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+            <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400">
+              Trip Cancelled
+            </span>
+          </div>
+          
+          <h1 className="text-3xl font-black tracking-tight text-white sm:text-5xl">
+            Route Is Unavailable
+          </h1>
+          
+          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-medium max-w-md mx-auto">
+            The station or itinerary you are trying to reach does not exist. It may have been permanently archived, renamed, or shifted to another platform.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+        {/* 🛠️ টোটালি রি-ডিজাইনড অ্যাকশন বাটন্স */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto pt-4">
           <Link
             href="/"
-            className="flex-1 py-3 bg-[var(--primary)] hover:opacity-95 text-white font-bold rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-md active:scale-95"
+            className="w-full sm:flex-1 py-3.5 bg-linear-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/20 active:scale-98"
           >
-            <Home className="w-4 h-4" />
-            <span>Go Back Home</span>
+            <Home className="w-3.5 h-3.5" />
+            <span>Terminal Home</span>
           </Link>
+          
           <Link
             href="/tickets"
-            className="flex-1 py-3 border border-[var(--border)] bg-[var(--input)] hover:bg-[var(--card)] text-foreground font-semibold rounded-xl text-sm transition-all flex items-center justify-center gap-2 active:scale-95"
+            className="w-full sm:flex-1 py-3.5 bg-slate-900 hover:bg-slate-850 border border-slate-800 text-slate-300 hover:text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 active:scale-98"
           >
-            <Search className="w-4 h-4" />
-            <span>Search Tickets</span>
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Find Other Routes</span>
           </Link>
         </div>
+
       </div>
     </div>
   );
