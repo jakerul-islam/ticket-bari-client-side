@@ -39,8 +39,8 @@ const lightImages = [
 
 const darkImages = [
   "https://i.ibb.co.com/q3KgPMzf/image.png", // Night Highway / Traffic Trails
-  "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?auto=format&fit=crop&q=80&w=1920", // Night Train / Rail
-  "https://images.unsplash.com/photo-1483450388369-9ed95738483c?auto=format&fit=crop&q=80&w=1920", // Night Flight / Cabin View
+  // "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?auto=format&fit=crop&q=80&w=1920", // Night Train / Rail
+  // "https://images.unsplash.com/photo-1483450388369-9ed95738483c?auto=format&fit=crop&q=80&w=1920", // Night Flight / Cabin View
 ];
 
 export default function HomePage() {
