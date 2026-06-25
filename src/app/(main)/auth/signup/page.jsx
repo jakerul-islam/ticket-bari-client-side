@@ -343,50 +343,62 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--background)] relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
-      
-      <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-br from-[var(--primary)]/10 to-transparent blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-gradient-to-tr from-[var(--secondary)]/10 to-transparent blur-[100px] pointer-events-none" />
+      {/* Background Ambient Glows */}
+      <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[var(--primary)]/10 to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-tr from-[var(--secondary)]/10 to-transparent blur-[120px] pointer-events-none" />
 
-      {/* Main Glassmorphism Container */}
-      <div className="w-full max-w-5xl bg-gradient-to-b from-[var(--card)] to-[var(--background)] rounded-[2.5rem] border border-[var(--border)] shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 relative z-10 backdrop-blur-sm">
+      {/* Centered Form Card */}
+      <div className="w-full max-w-xl bg-[var(--card)] rounded-[2rem] border border-[var(--border)] shadow-2xl p-8 sm:p-10 lg:p-12 relative z-10 backdrop-blur-md">
         
-        {/* Left Side: Form Container */}
-        <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-center space-y-7">
-          <div className="space-y-2">
-            <h1 className="text-4xl font-black tracking-tight text-foreground bg-gradient-to-r from-foreground via-foreground to-[var(--primary)] bg-clip-text">
-              Get On Board.
+        {/* Brand Logo & Header */}
+        <div className="flex flex-col items-center text-center space-y-4 mb-8">
+          <Link href="/" className="flex items-center space-x-2 bg-[var(--input)] px-4 py-2 rounded-xl border border-[var(--border)] transition-transform active:scale-95">
+            <Ticket className="w-4 h-4 text-[var(--primary)]" />
+            <span className="font-sans font-black tracking-[0.2em] text-foreground text-xs">
+              TICKET<span className="text-[var(--primary)]">BARI</span>
+            </span>
+          </Link>
+          
+          <div className="space-y-1">
+            <h1 className="text-3xl font-black tracking-tight text-foreground">
+              Create Account
             </h1>
             <p className="text-sm text-foreground/60 font-medium">
-              Setup your account profile to access reservations
+              Join us to book tickets and manage your transits
             </p>
           </div>
+        </div>
 
-          {error && (
-            <div className="flex items-center space-x-3 bg-red-500/5 text-red-500 p-4 rounded-2xl text-xs font-semibold border border-red-500/10 animate-shake">
-              <AlertCircle className="w-4 h-4 shrink-0" />
-              <span>{error}</span>
-            </div>
-          )}
+        {/* Error Alert */}
+        {error && (
+          <div className="flex items-center space-x-3 bg-red-500/5 text-red-500 p-4 rounded-xl text-xs font-semibold border border-red-500/10 mb-6">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>{error}</span>
+          </div>
+        )}
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
-            {/* Full Name */}
-            <div className="space-y-1.5 sm:col-span-2">
-              <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
-                <User className="w-3.5 h-3.5 text-[var(--primary)]" />
-                <span>Identity Name</span>
-              </label>
-              <Input
-                type="text"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Alen Walker"
-                className="bg-[var(--input)] border-[var(--border)] text-foreground placeholder:text-foreground/30 h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-[var(--primary)] transition-all"
-              />
-            </div>
+        {/* Signup Form */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          
+          {/* Identity Name */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
+              <User className="w-3.5 h-3.5 text-[var(--primary)]" />
+              <span>Identity Name</span>
+            </label>
+            <Input
+              type="text"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g. Alen Walker"
+              className="bg-[var(--input)] border-[var(--border)] text-foreground placeholder:text-foreground/30 h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-[var(--primary)] transition-all"
+            />
+          </div>
 
-            {/* Email Address */}
+          {/* Email Terminal & Security Key Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Email Terminal */}
             <div className="space-y-1.5">
               <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
                 <Mail className="w-3.5 h-3.5 text-[var(--primary)]" />
@@ -402,7 +414,7 @@ export default function SignUpPage() {
               />
             </div>
 
-            {/* Password */}
+            {/* Security Key */}
             <div className="space-y-1.5">
               <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
                 <Key className="w-3.5 h-3.5 text-[var(--primary)]" />
@@ -417,8 +429,11 @@ export default function SignUpPage() {
                 className="bg-[var(--input)] border-[var(--border)] text-foreground placeholder:text-foreground/30 h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-[var(--primary)] transition-all"
               />
             </div>
+          </div>
 
-            {/* Register As */}
+          {/* Account Type & Avatar Display Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Account Type */}
             <div className="space-y-1.5">
               <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[var(--primary)]" />
@@ -427,14 +442,14 @@ export default function SignUpPage() {
               <Select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="bg-[var(--input)] border-[var(--border)] text-foreground h-12 rounded-xl focus:ring-1 focus:ring-[var(--primary)]"
+                className="bg-[var(--input)] border-[var(--border)] text-foreground h-12 rounded-xl focus:ring-1 focus:ring-[var(--primary)] w-full"
               >
-                <option value="user">Passenger (Standard User)</option>
-                <option value="vendor">Merchant / Transport Vendor</option>
+                <option value="user">Passenger (Standard)</option>
+                <option value="vendor">Transport Vendor</option>
               </Select>
             </div>
 
-            {/* Profile Image */}
+            {/* Avatar Display */}
             <div className="space-y-1.5">
               <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
                 <ImageIcon className="w-3.5 h-3.5 text-[var(--primary)]" />
@@ -444,87 +459,54 @@ export default function SignUpPage() {
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="bg-[var(--input)] border-[var(--border)] text-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-[var(--primary)]/10 file:text-xs file:font-bold file:text-[var(--primary)] hover:file:bg-[var(--primary)]/20 h-12 flex items-center rounded-xl cursor-pointer"
+                className="bg-[var(--input)] border-[var(--border)] text-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-[var(--primary)]/10 file:text-xs file:font-bold file:text-[var(--primary)] hover:file:bg-[var(--primary)]/20 h-12 flex items-center rounded-xl cursor-pointer w-full"
               />
             </div>
-
-            {/* Submit Button */}
-            <div className="sm:col-span-2 pt-2">
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full h-12 bg-[var(--primary)] hover:opacity-90 text-white font-bold rounded-xl text-sm transition-all active:scale-[0.98] flex items-center justify-center space-x-2 shadow-lg shadow-[var(--primary)]/10"
-              >
-                {loading ? (
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
-                ) : (
-                  <>
-                    <UserPlus className="w-4 h-4" />
-                    <span>Initialize Registration</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </form>
-
-          {/* Divider */}
-          <div className="relative flex items-center justify-center py-1">
-            <hr className="w-full border-[var(--border)]" />
-            <span className="absolute bg-[var(--card)] px-4 text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40">Alternative Gate</span>
           </div>
 
-          {/* OAuth & Redirection */}
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 items-center">
+          {/* Submit Button */}
+          <div className="pt-2">
             <button
-              onClick={handleGoogleSignIn}
-              className="sm:col-span-3 h-12 bg-[var(--input)] hover:bg-[var(--border)] text-foreground border border-[var(--border)] rounded-xl text-xs font-bold tracking-wide transition-all duration-200 flex items-center justify-center space-x-3"
+              type="submit"
+              disabled={loading}
+              className="w-full h-12 bg-[var(--primary)] hover:opacity-90 text-white font-bold rounded-xl text-sm transition-all active:scale-[0.98] flex items-center justify-center space-x-2 shadow-lg shadow-[var(--primary)]/10"
             >
-              <svg className="w-4 h-4 shrink-0 fill-current text-foreground" viewBox="0 0 24 24">
-                <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.468 0-6.28-2.812-6.28-6.28s2.812-6.28 6.28-6.28c1.637 0 3.125.626 4.248 1.648l3.123-3.123C19.262 2.693 15.98 1 12.24 1 5.922 1 12s4.922 11 11.24 11c6.518 0 11.24-4.582 11.24-11 0-.74-.067-1.455-.19-2.143H12.24z"/>
-              </svg>
-              <span>Connect via Google</span>
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
+              ) : (
+                <>
+                  <UserPlus className="w-4 h-4" />
+                  <span>Initialize Registration</span>
+                </>
+              )}
             </button>
-
-            <p className="sm:col-span-2 text-center sm:text-right text-xs text-foreground/50 font-medium">
-              Registered?{" "}
-              <Link href="/auth/signin" className="text-[var(--primary)] hover:underline font-bold block sm:inline-block sm:ml-1">
-                Access Account
-              </Link>
-            </p>
           </div>
+        </form>
+
+        {/* Divider */}
+        <div className="relative flex items-center justify-center py-6">
+          <hr className="w-full border-[var(--border)]" />
+          <span className="absolute bg-[var(--card)] px-4 text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40">Alternative Gate</span>
         </div>
 
-        {/* Right Side: Showcase Panel (লেআউট অদলবদল করা হয়েছে) */}
-        <div className="hidden lg:col-span-5 lg:flex relative bg-neutral-950 overflow-hidden flex-col justify-between p-12">
-          {/* Overlay Graphics */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity scale-105"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=1080')" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-950/70 to-neutral-950" />
+        {/* Google SignIn & Redirect Links */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <button
+            onClick={handleGoogleSignIn}
+            className="w-full sm:w-auto px-6 h-12 bg-[var(--input)] hover:bg-[var(--border)] text-foreground border border-[var(--border)] rounded-xl text-xs font-bold tracking-wide transition-all duration-200 flex items-center justify-center space-x-3 grow"
+          >
+            <svg className="w-4 h-4 shrink-0 fill-current text-foreground" viewBox="0 0 24 24">
+              <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.468 0-6.28-2.812-6.28-6.28s2.812-6.28 6.28-6.28c1.637 0 3.125.626 4.248 1.648l3.123-3.123C19.262 2.693 15.98 1 12.24 1 5.922 1 12s4.922 11 11.24 11c6.518 0 11.24-4.582 11.24-11 0-.74-.067-1.455-.19-2.143H12.24z"/>
+            </svg>
+            <span>Connect via Google</span>
+          </button>
 
-          {/* Top Brand Logo */}
-          <div className="relative z-10">
-            <Link href="/" className="flex items-center space-x-2 w-fit bg-neutral-900/80 backdrop-blur-md px-4 py-2 rounded-xl border border-neutral-800">
-              <Ticket className="w-4 h-4 text-[var(--primary)]" />
-              <span className="font-sans font-black tracking-[0.2em] text-white text-xs">
-                TICKET<span className="text-[var(--primary)]">BARI</span>
-              </span>
+          <p className="text-center sm:text-right text-xs text-foreground/50 font-medium whitespace-nowrap">
+            Registered?{" "}
+            <Link href="/auth/signin" className="text-[var(--primary)] hover:underline font-bold ml-1">
+              Access Account
             </Link>
-          </div>
-
-          {/* Bottom Pitch Text */}
-          <div className="relative z-10 space-y-3">
-            <div className="inline-flex items-center space-x-2 bg-[var(--primary)]/20 text-[var(--primary)] border border-[var(--primary)]/30 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
-              <span>Smart Booking</span>
-            </div>
-            <h2 className="text-2xl font-black tracking-tight text-white leading-tight">
-              Your Ultimate Gateway to Seamless Transits.
-            </h2>
-            <p className="text-xs text-neutral-400 leading-relaxed">
-              Unlock fluid scheduling for interstate buses, regional train tracks, and global flight pathways from a centralized control unit.
-            </p>
-          </div>
+          </p>
         </div>
 
       </div>
