@@ -343,7 +343,7 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--background)] relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
-      {/* Background Subtle Geometrics (ডিজাইন একদম ইউনিক করার জন্য) */}
+      
       <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-br from-[var(--primary)]/10 to-transparent blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-gradient-to-tr from-[var(--secondary)]/10 to-transparent blur-[100px] pointer-events-none" />
 
