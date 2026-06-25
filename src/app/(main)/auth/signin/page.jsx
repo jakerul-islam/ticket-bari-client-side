@@ -168,7 +168,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { signIn } from "@/lib/auth-client";
-import { LogIn, Key, Mail, AlertCircle, Ticket } from "lucide-react";
+import { LogIn, Key, Mail, AlertCircle, TrainFront } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 export default function SignInPage() {
@@ -212,18 +212,20 @@ export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--background)] relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
       {/* Background Ambient Glows */}
-      <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[var(--primary)]/10 to-transparent blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-[-20%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-tr from-[var(--secondary)]/10 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-emerald-500/5 to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-tr from-teal-500/5 to-transparent blur-[120px] pointer-events-none" />
 
       {/* Centered Form Card */}
       <div className="w-full max-w-xl bg-[var(--card)] rounded-[2rem] border border-[var(--border)] shadow-2xl p-8 sm:p-10 lg:p-12 relative z-10 backdrop-blur-md">
         
         {/* Brand Logo & Header */}
         <div className="flex flex-col items-center text-center space-y-4 mb-8">
-          <Link href="/" className="flex items-center space-x-2 bg-[var(--input)] px-4 py-2 rounded-xl border border-[var(--border)] transition-transform active:scale-95">
-            <Ticket className="w-4 h-4 text-[var(--primary)]" />
-            <span className="font-sans font-black tracking-[0.2em] text-foreground text-xs">
-              TICKET<span className="text-[var(--primary)]">BARI</span>
+          <Link href="/" className="flex items-center space-x-2.5 group">
+            <div className="p-2 bg-gradient-to-tr from-emerald-500 to-teal-600 rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105">
+              <TrainFront className="w-4 h-4 text-white" />
+            </div>
+            <span className="text-lg font-black tracking-wider text-foreground select-none">
+              TICKET<span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">BARI</span>
             </span>
           </Link>
           
@@ -251,7 +253,7 @@ export default function SignInPage() {
           {/* Email Terminal */}
           <div className="space-y-1.5">
             <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
-              <Mail className="w-3.5 h-3.5 text-[var(--primary)]" />
+              <Mail className="w-3.5 h-3.5 text-emerald-500" />
               <span>Email Terminal</span>
             </label>
             <Input
@@ -260,14 +262,14 @@ export default function SignInPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@domain.com"
-              className="bg-[var(--input)] border-[var(--border)] text-foreground placeholder:text-foreground/30 h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-[var(--primary)] transition-all"
+              className="bg-[var(--input)] border-[var(--border)] text-foreground placeholder:text-foreground/30 h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-emerald-500 transition-all"
             />
           </div>
 
           {/* Security Key */}
           <div className="space-y-1.5">
             <label className="text-[11px] font-extrabold text-foreground/50 uppercase tracking-widest flex items-center space-x-1.5">
-              <Key className="w-3.5 h-3.5 text-[var(--primary)]" />
+              <Key className="w-3.5 h-3.5 text-emerald-500" />
               <span>Security Key</span>
             </label>
             <Input
@@ -276,7 +278,7 @@ export default function SignInPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="bg-[var(--input)] border-[var(--border)] text-foreground placeholder:text-foreground/30 h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-[var(--primary)] transition-all"
+              className="bg-[var(--input)] border-[var(--border)] text-foreground placeholder:text-foreground/30 h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-emerald-500 transition-all"
             />
           </div>
 
@@ -285,7 +287,7 @@ export default function SignInPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-12 bg-[var(--primary)] hover:opacity-90 text-white font-bold rounded-xl text-sm transition-all active:scale-[0.98] flex items-center justify-center space-x-2 shadow-lg shadow-[var(--primary)]/10"
+              className="w-full h-12 bg-gradient-to-r from-emerald-500 to-teal-600 hover:opacity-90 text-white font-bold rounded-xl text-sm transition-all active:scale-[0.98] flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/10"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
@@ -319,7 +321,7 @@ export default function SignInPage() {
 
           <p className="text-center sm:text-right text-xs text-foreground/50 font-medium whitespace-nowrap">
             New here?{" "}
-            <Link href="/auth/signup" className="text-[var(--primary)] hover:underline font-bold ml-1">
+            <Link href="/auth/signup" className="text-emerald-500 hover:underline font-bold ml-1">
               Create Account
             </Link>
           </p>
